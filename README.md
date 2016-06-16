@@ -22,3 +22,26 @@ This is a very basic package that effectivly morphs the URL scheme from HTTPS to
 	resp, _ := mock.Client.Get("https://www.example.com")
 	// Treat the response as you would anything else
 ```
+
+In order to handle a method that makes multiple requests to multiple endpoints we can do this :
+
+```golang
+func multiReqHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(200)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+
+	switch r.URL.Path {
+	case "/v2/search":
+		fmt.Fprintln(w, `{"result":"foo"}`)
+	case "/v2/status":
+		fmt.Fprintln(w, `{"result":"bar"}`)
+	}
+}
+
+mock, err := navCrystal.NewMock(multiReqHandler)
+if err != nil {
+	fmt.Println("Failed to create Mock Client")
+}
+searchResp, _ := mock.Client.Get("https://www.example.com/v2/search")
+statResp, _ := mock.Client.Get("https://www.example.com/v2/status")
+```
