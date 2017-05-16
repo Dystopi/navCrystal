@@ -1,6 +1,6 @@
-# navCrystal
+# sslMock
 
-navCrystal is a GO HTTPS mocking package
+sslMock is a GO HTTPS mocking package. The primary use case for this is mocking 3rd party API calls that rely upon https
 
 ## Installation
 ```golang
