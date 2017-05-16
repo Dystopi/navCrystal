@@ -1,5 +1,4 @@
 # navCrystal
-![Zhaan with the Nav Crystal from DNA Mad Scientist] (http://1.bp.blogspot.com/-NS2_TUS5mVg/TjDFkbnF6PI/AAAAAAAAOTU/2fM_KioX5J8/s320/mesmerized.JPG)
 
 navCrystal is a GO HTTPS mocking package
 
