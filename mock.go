@@ -1,4 +1,4 @@
-package navCrystal
+package sslMock
 
 import (
 	"net/http"
