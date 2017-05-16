@@ -4,7 +4,7 @@ sslMock is a GO HTTPS mocking package. The primary use case for this is mocking 
 
 ## Installation
 ```golang
-go get github.com/Dystopi/navCrystal
+go get github.com/Dystopi/sslMock
 ```
 
 ## Overview
