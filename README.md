@@ -14,7 +14,7 @@ This is a very basic package that effectivly morphs the URL scheme from HTTPS to
 ## Usage
 
 ```golang
-	mock, err := navCrystal.NewMock({CUSTOM DEFINED REQUEST HANDLER})
+	mock, err := sslMock.NewMock({CUSTOM DEFINED REQUEST HANDLER})
 	if err != nil {
 		fmt.Println("Failed to create Mock Client")
 	}
@@ -37,7 +37,7 @@ func multiReqHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-mock, err := navCrystal.NewMock(multiReqHandler)
+mock, err := sslMock.NewMock(multiReqHandler)
 if err != nil {
 	fmt.Println("Failed to create Mock Client")
 }
