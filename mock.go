@@ -13,25 +13,20 @@ import (
 
 type Mock struct {
 	Client *http.Client
-}
-
-type MockHTTPSTransport struct {
-	Transport http.RoundTripper
 	URL       *url.URL
 }
 
 func NewMock(callback func(http.ResponseWriter, *http.Request)) (*Mock, error) {
 	server := httptest.NewServer(http.HandlerFunc(callback))
 	serverURL, _ := url.Parse(server.URL)
-	tPort := MockHTTPSTransport{URL: serverURL}
-	httpClient := &http.Client{Transport: tPort}
-	return &Mock{httpClient}, nil
+	httpClient := &http.Client{}
+	return &Mock{httpClient, serverURL}, nil
 }
 
-func (m MockHTTPSTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+func (m Mock) RoundTrip(req *http.Request) (*http.Response, error) {
 	req.URL.Scheme = m.URL.Scheme
 	req.URL.Host = m.URL.Host
-	rt := m.Transport
+	rt := m.Client.Transport
 	if rt == nil {
 		rt = http.DefaultTransport
 	}
